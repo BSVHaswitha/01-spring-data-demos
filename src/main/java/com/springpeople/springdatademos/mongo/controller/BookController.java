@@ -1,6 +1,7 @@
 package com.springpeople.springdatademos.mongo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,10 +18,15 @@ public class BookController {
 
 	@Autowired
 	BookService bookService;
+	
+	@Value("${app.name}")
+	
+	String appName;
 
 	@PostMapping
 	@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
 	public Book saveBook(@RequestBody Book entity) {
+		System.out.println(appName);
 		return this.bookService.saveBook(entity);
 	}
 

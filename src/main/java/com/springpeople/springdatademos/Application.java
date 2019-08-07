@@ -1,9 +1,10 @@
 package com.springpeople.springdatademos;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.context.annotation.PropertySource;
 
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -13,8 +14,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
-@EnableMongoRepositories
+//@EnableMongoRepositories
+@PropertySource("application-${spring.profiles.active}.properties")
 public class Application {
+	
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
