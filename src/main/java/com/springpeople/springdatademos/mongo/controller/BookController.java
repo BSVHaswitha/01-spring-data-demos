@@ -1,5 +1,7 @@
 package com.springpeople.springdatademos.mongo.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
@@ -25,7 +27,7 @@ public class BookController {
 
 	@PostMapping
 	@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
-	public Book saveBook(@RequestBody Book entity) {
+	public Book saveBook(@RequestBody @Valid Book entity) {
 		System.out.println(appName);
 		return this.bookService.saveBook(entity);
 	}

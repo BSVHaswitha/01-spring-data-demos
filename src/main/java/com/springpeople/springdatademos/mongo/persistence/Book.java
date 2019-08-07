@@ -2,12 +2,17 @@ package com.springpeople.springdatademos.mongo.persistence;
 
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Max;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Book {
+	@NotNull
 	private String isbnNo;
 	private List<String> authors;
+	@Max(value=25)
 	private String title;
 	public String getIsbnNo() {
 		return isbnNo;
